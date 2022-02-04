@@ -1,11 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    ♥auth♥
+    Авторизация
 {% endblock %}
 
 {% block body %}
-<div style="width: 100px; height: 100px; background-color: red;">
-    hello, {{ controller_name }}
-</div>
+    <div class="form">
+        <h1>Вход</h1>
+        <div class="input-form">
+            <input type="text" placeholder="Логин">
+        </div>
+        <div class="input-form">
+            <input type="password" placeholder="Пароль">
+        </div>
+        <div class="input-form">
+            <input type="submit" value="Вход">
+        </div>
+        <a href="#" class="forget">Забыли пароль?</a>
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        body{
+            background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(1.jpg);
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: sans-serif;
+        }
+    </style>
 {% endblock %}
