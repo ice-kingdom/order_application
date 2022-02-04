@@ -16,3 +16,5 @@ class TestController extends AbstractController
         return $this->render('test/test.html.twig');
     }
 }
+
+//  php bin/console make:controller AuthController --> создание контроллера
