@@ -6,16 +6,19 @@
 
 {% block body %}
     <div class="form">
-        <h1>Вход</h1>
-        <div class="input-form">
-            <input type="text" placeholder="Логин">
-        </div>
-        <div class="input-form">
-            <input type="password" placeholder="Пароль">
-        </div>
-        <div class="input-form">
-            <input type="submit" value="Войти">
-        </div>
+        <form method="post" action="{{ path('authorization') }}">
+            {% if error is not null %}<div>{{ error }}</div> {% endif %}
+            <h1>Вход</h1>
+            <div class="input-form">
+                <input name="login" type="text" placeholder="Логин">
+            </div>
+            <div class="input-form">
+                <input name="password" type="password" placeholder="Пароль">
+            </div>
+            <div class="input-form">
+                <input type="submit" value="Войти">
+            </div>
+        </form>
         <a href="#" class="forget">Забыли пароль?</a>
     </div>
 {% endblock %}
@@ -55,7 +58,7 @@
         .input-form input{
             padding: 10%;
             width: 100%;
-            color: darkred;
+            color: #FFFFFF;
             font-size: 20px;
             background: none;
             outline: none;

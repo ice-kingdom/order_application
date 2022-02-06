@@ -20,4 +20,6 @@ return function (RoutingConfigurator $routes) {
         ->controller([AuthController::class, 'index'])->methods(['GET']);
     $routes->add('home', '/')
         ->controller([MainPageController::class, 'index'])->methods(['GET']);
+    $routes->add('authorization', '/authorization')
+        ->controller([AuthController::class, 'authorization'])->methods(['POST']);
 };
