@@ -7,16 +7,99 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+    <div class="form">
+        <h1>авторизация</h1>
+        <form action="{{ path('login') }}" method="post">
+            <div class="input-form">
+                <input placeholder="Почта" type="text" id="username" name="_username" value="{{ last_username }}"/>
+            </div>
+            <div class="input-form">
+                <input placeholder="Пароль" type="password" id="password" name="_password"/>
+            </div>
+            <div class="input-form">
+                <input type="submit" value="Войти">
+                <a href="{{ path('app_register') }}">Зарегистрироваться</a>
+            </div>
+        </form>
+    </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password"/>
+{% endblock %}
 
-        {# Если вы хотите контролировать URL, по которому перенаправляется пользователь при успешном входе
-        <input type="hidden" name="_target_path" value="/account"/> #}
+{% block styles %}
+    <style>
+        body {
+            background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(1.jpg);
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
 
-        <button type="submit">login</button>
-    </form>
+        .form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #3377adeb;
+            border-radius: 15px;
+            height: 450px;
+            width: 350px;
+        }
+
+        .form h1 {
+            margin: 30px 43px;
+            padding: 0;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        .input-form {
+            margin: 15px 40px;
+            text-align: center;
+        }
+
+        .input-form input{
+            padding: 10%;
+            width: 100%;
+            color: white;
+            font-size: 20px;
+            background: none;
+            outline: none;
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 15px;
+        }
+
+        .input-form input[type="text"]:focus, .input-form input[type="password"]:focus{
+            border: 1px solid #AAAAAA;
+        }
+
+        .input-form input[type="submit"]{
+            margin-top: 20px;
+            color: #FFFFFF;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            background: #66e0b7bf;
+            transition: .3s;
+            border-radius: 15px;
+        }
+
+        .input-form input[type="submit"]:hover{
+            background: aquamarine;
+        }
+
+        .form a{
+            display: block;
+            padding: 0 0 30px;
+            text-align: center;
+            color: aqua;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .form a:hover{
+            color: #77a9cc;
+        }
+    </style>
 {% endblock %}

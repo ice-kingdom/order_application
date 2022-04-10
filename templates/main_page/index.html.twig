@@ -1,20 +1,82 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainPageController!{% endblock %}
+{% block title %}Главная{% endblock %}
+
+{% block styles %}
+    <style>
+        table {
+            margin-top: 200px;
+            width: 100%;
+        }
+
+        div {
+            margin-top: 280px;
+            margin-left: 190px;
+        }
+
+        h1 {
+            margin-left: 190px;
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container">
+    <div>
+        <a href="{{ path('fu') }}" class="btn btn-primary">Добавить Олега</a>
+        <h1>Выберите группу</h1>
+        <form  method="post">
+            <a href="/students/MT-101" type="button" class="btn btn-outline-info">МТ-101</a>
+            <a href="/students/MT-102" type="button" class="btn btn-outline-info">МТ-102</a>
+            <a href="/students/MP-101" type="button" class="btn btn-outline-info">МП-101</a>
+            <a href="/students/MP-102" type="button" class="btn btn-outline-info">МП-102</a>
+            <a href="/students/MN-101" type="button" class="btn btn-outline-info">МН-101</a>
+            <a href="/students/MN-102" type="button" class="btn btn-outline-info">МН-102</a>
+            <a href="/students/MK-101" type="button" class="btn btn-outline-info">МК-101</a>
+            <a href="/students/MK-102" type="button" class="btn btn-outline-info">МК-102</a>
+        </form>
+    </div>
+    <!--
+      <form action="{{ path('logout') }}" method="post">
+        <button class="btn btn-primary" type="submit">logout</button>
+    </form>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Студент</th>
+            <th scope="col">Last</th>
+            <th scope="col">Номер приказа</th>
+            <th scope="col">Приказ</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        </tbody>
+    </table>-->
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/OpenServer/domains/kursach.ru/src/Controller/MainPageController.php'|file_link(0) }}">src/Controller/MainPageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/OpenServer/domains/kursach.ru/templates/main_page/index.html.twig'|file_link(0) }}">templates/main_page/index.html.twig</a></code></li>
-    </ul>
 </div>
 {% endblock %}

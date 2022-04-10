@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,5 +21,13 @@ class LoginController extends AbstractController
               'last_username' => $lastUsername,
               'error'         => $error,
           ]);
-      }
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(Request $request){
+        $request->getSession()->invalidate();
+        //$this->token->setToken(null);
+    }
 }

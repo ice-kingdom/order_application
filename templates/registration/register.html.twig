@@ -3,15 +3,96 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="form">
+        <h1>регистрация</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+{#        {{ form_row(registrationForm.agreeTerms) }}#}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        <div class="input-form">
+            <input type="submit" value="Зарегистрироваться">
+        </div>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        body {
+            background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(1.jpg);
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+
+        .form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #3377adeb;
+            border-radius: 15px;
+        }
+
+        .form h1 {
+            margin: 30px 100px;
+            padding: 0;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        .input-form {
+            margin: 15px 40px;
+            text-align: center;
+        }
+
+        .input-form input{
+            padding: 10%;
+            width: 100%;
+            color: white;
+            font-size: 20px;
+            background: none;
+            outline: none;
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 15px;
+        }
+
+        .input-form input[type="text"]:focus, .input-form input[type="password"]:focus{
+            border: 1px solid #AAAAAA;
+        }
+
+        .input-form input[type="submit"]{
+            margin-top: 20px;
+            color: #FFFFFF;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            background: #66e0b7bf;
+            transition: .3s;
+            border-radius: 15px;
+        }
+
+        .input-form input[type="submit"]:hover{
+            background: aquamarine;
+        }
+
+        .form a{
+            display: block;
+            padding: 0 0 30px;
+            text-align: center;
+            color: aqua;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .form a:hover{
+            color: #77a9cc;
+        }
+    </style>
 {% endblock %}
