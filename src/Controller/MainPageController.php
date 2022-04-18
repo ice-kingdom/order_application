@@ -6,6 +6,7 @@ use App\Entity\Student;
 use App\Entity\User;
 use App\Repository\StudentRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Faker\Factory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,19 +33,26 @@ class MainPageController extends AbstractController
     }
 
     public function fakeUsers(ManagerRegistry $doctrine){
+        $faker = Factory::create('ru_RU');
         $entityManager = $doctrine->getManager();
 
-        $student = new Student();
-        $student->setFirstName("Oleg");
-        $student->setLastName("Pauli");
-        $student->setGroupNumber("MT-101");
-        $student->setCourse(1);
+        for ($i = 0; $i < 24; $i++){
+            $student = new Student();
+            $splitted = explode(" ", $faker->name);
+            $first_name = $splitted[0];
+            $last_name = $splitted[1];
+            $student->setFirstName($first_name);
+            $student->setLastName($last_name);
+            $student->setGroupNumber("MT-101");
+            $student->setCourse(1);
 
-        // сообщите Doctrine, что вы хотите (в итоге) сохранить Продукт (пока без запросов)
-        $entityManager->persist($student);
+            // сообщите Doctrine, что вы хотите (в итоге) сохранить Продукт (пока без запросов)
+            $entityManager->persist($student);
 
-        // действительно выполните запросы (например, запрос INSERT)
-        $entityManager->flush();
+            // действительно выполните запросы (например, запрос INSERT)
+            $entityManager->flush();
+        }
+
         return $this->redirectToRoute('home');
         //return new Response('Saved new product with id '.$student->getId());
     }

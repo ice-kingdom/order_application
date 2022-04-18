@@ -42,10 +42,10 @@
         "symfony/yaml": "5.3.*",
         "symfonycasts/verify-email-bundle": "^1.8",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0",
-      "ext-http": "*"
+        "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "fzaninotto/faker": "^1.9",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "5.3.*",
         "symfony/css-selector": "5.3.*",
