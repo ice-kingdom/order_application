@@ -26,10 +26,6 @@ return function (RoutingConfigurator $routes) {
         ->controller([LoginController::class, 'logout'])->methods(['POST']);
     $routes->add('students', '/students/{group_name}')
         ->controller([MainPageController::class, 'students'])->methods(['GET']);
-    $routes->add('login', '/login')
-        ->controller([LoginController::class, 'index'])->methods(['GET']);
-    $routes->add('app_register', '/register')
-        ->controller([RegistrationController::class, 'register'])->methods(['GET']);
     $routes->add('fu', '/fake')
         ->controller([MainPageController::class, 'fakeUsers'])->methods(['GET']);
 };
