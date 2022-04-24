@@ -3,26 +3,13 @@
 {% block title %}Главная{% endblock %}
 
 {% block styles %}
-{#    <style>#}
-{#        table {#}
-{#            margin-top: 200px;#}
-{#            width: 100%;#}
-{#        }#}
 
-{#        .mt280_ml190 {#}
 
-{#        }#}
-
-{#        h1 {#}
-{#            margin-left: 190px;#}
-{#        }#}
-{#    </style>#}
 {% endblock %}
 
 {% block body %}
 <div class="container">
-    <div class="mt280_ml190" style="text-align: center; margin-top: 15%;">
-        <a href="{{ path('fu') }}" class="btn btn-primary">Добавить Олега</a>
+    <div class="mt280_ml190" style="text-align: center; margin-top: 25%;">
         <h1>Выберите группу</h1>
         <form  method="post">
             <a href="/students/MT-101" type="button" class="btn btn-outline-info">МТ-101</a>
@@ -35,47 +22,5 @@
             <a href="/students/MK-102" type="button" class="btn btn-outline-info">МК-102</a>
         </form>
     </div>
-
-{#      <form action="{{ path('logout') }}" method="post">#}
-{#        <button class="btn btn-primary" type="submit">logout</button>#}
-{#    </form>#}
-{#    <table class="table table-hover">#}
-{#        <thead>#}
-{#        <tr>#}
-{#            <th scope="col">#</th>#}
-{#            <th scope="col">Студент</th>#}
-{#            <th scope="col">Last</th>#}
-{#            <th scope="col">Номер приказа</th>#}
-{#            <th scope="col">Приказ</th>#}
-{#            <th scope="col">Handle</th>#}
-{#        </tr>#}
-{#        </thead>#}
-{#        <tbody>#}
-{#        <tr>#}
-{#            <th scope="row">1</th>#}
-{#            <td>Mark</td>#}
-{#            <td>Otto</td>#}
-{#            <td>@mdo</td>#}
-{#            <td>Otto</td>#}
-{#            <td>@mdo</td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <th scope="row">2</th>#}
-{#            <td>Jacob</td>#}
-{#            <td>Thornton</td>#}
-{#            <td>@fat</td>#}
-{#            <td>Otto</td>#}
-{#            <td>@mdo</td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <th scope="row">3</th>#}
-{#            <td colspan="2">Larry the Bird</td>#}
-{#            <td>@twitter</td>#}
-{#            <td>Otto</td>#}
-{#            <td>@mdo</td>#}
-{#        </tr>#}
-{#        </tbody>#}
-{#    </table>#}
-
 </div>
 {% endblock %}

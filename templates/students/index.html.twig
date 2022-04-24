@@ -1,5 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ group }}
+    <div class="contain">
+        <h1 class="zag">Список студентов</h1>
+        {% for st in students %}
+            <a href="/order/{{ st.getId() }}" class="link">{{ st.getLastName() }} {{ st.getFirstName()}} {{ st.getGroupNumber() }} <br/></a>
+        {% endfor %}
+    </div>
 {% endblock %}
+{% block styles %}
+<style>
+.link {
+    text-decoration: none;
+    color: #5eb5e0;
+    font-size: 23px;
+    margin-left: 5%;
+}
+
+.contain {
+    margin-left: 35%;
+    margin-top: 5%;
+}
+</style>
+{% endblock %}
+

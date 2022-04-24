@@ -7,9 +7,9 @@
         <h1>регистрация</h1>
 
         {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.email, { 'attr': {'class': 'input-form'} }) }}
             {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
+                'attr':{'class':'input-form'}
             }) }}
 {#        {{ form_row(registrationForm.agreeTerms) }}#}
 

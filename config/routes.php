@@ -13,6 +13,7 @@ use App\Controller\RegistrationController;
 use App\Controller\TestController;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use \App\Controller\AuthController;
+use \App\Controller\OrderController;
 
 return function (RoutingConfigurator $routes) {
     $routes->add('test', '/test')
@@ -28,4 +29,6 @@ return function (RoutingConfigurator $routes) {
         ->controller([MainPageController::class, 'students'])->methods(['GET']);
     $routes->add('fu', '/fake')
         ->controller([MainPageController::class, 'fakeUsers'])->methods(['GET']);
+    $routes->add('order', '/order/{student_id}')
+        ->controller([OrderController::class, 'index'])->methods(['GET']);
 };
