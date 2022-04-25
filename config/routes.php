@@ -31,4 +31,8 @@ return function (RoutingConfigurator $routes) {
         ->controller([MainPageController::class, 'fakeUsers'])->methods(['GET']);
     $routes->add('order', '/order/{student_id}')
         ->controller([OrderController::class, 'index'])->methods(['GET']);
+    $routes->add('createOrder', '/createorder/{student_id}')
+        ->controller([OrderController::class, 'createOrderView'])->methods(['GET']);
+    $routes->add('put_order_in_db', '/create_an_order')
+        ->controller([OrderController::class, 'createOrder'])->methods(['POST']);
 };

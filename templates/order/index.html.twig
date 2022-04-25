@@ -10,42 +10,32 @@
 </style>
 <div class="container">
     <h1>{{student.getLastName()}} {{student.getFirstName()}} {{ student.getGroupNumber() }}</h1>
+    <div>
+        <a href="/createorder/{{student.getId()}}" class="btn btn-dark">Создать приказ</a>
+    </div>
 {#    <form action="{{ path('logout') }}" method="post">#}
 {#        <button class="btn btn-primary" type="submit">logout</button>#}
 {#            </form>#}
             <table class="table table-hover">
                 <thead>
                 <tr>
+                    <th scope="col">ID приказа</th>
                     <th scope="col">Номер приказа</th>
-                    <th scope="col">Приказ</th>
+                    <th scope="col">Дата приказа</th>
+                    <th scope="col">Формулировка</th>
                     <th scope="col">Печать</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>1488</td>
+                    <td>144-2g</td>
+                    <td>25.04.2022</td>
+                    <td>На зачисление стипендии</td>
+                    <td><a href="#" style="text-decoration: none;">🖨</a></td>
                 </tr>
                 </tbody>
             </table>
 </div>
+
 {% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Создать приказ{% endblock %}
+
+{% block body %}
+    <style>
+        .container {
+            margin-top: 5%;
+
+        }
+        .field{
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .label {
+
+            display: block;
+            width: 150px;
+            height: 25px;
+        }
+
+    </style>
+    <div class="container">
+        <div style="padding-left: 35%">
+        <h1 style="margin-bottom: 20px">Создание приказа</h1>
+        <form method="post" action="{{ path('put_order_in_db') }}">
+            <div class="field">
+                <p class="label">Факультет</p>
+                <select name="faculty" required
+                        style="border-radius: 5px; border: 1px solid black;">
+                    <option value="Математический">Математический</option>
+                </select>
+            </div>
+            <div class="field">
+                <p class="label">Дата приказа</p>
+                <input name="date" type="date" required style="border-radius: 5px; border: 1px solid black;">
+            </div>
+            <div class="field">
+                <p class="label">Номер приказа</p>
+                <input name="order_number"
+                       type="text"
+                       style="border-radius: 5px; border: 1px solid black;"
+                       placeholder="Номер приказа" required>
+            </div>
+            <div class="field">
+                <p class="label">Форма обучения</p>
+                <select name="study_form" required style="border-radius: 5px; border: 1px solid black;">
+                    <option value="очная">очная</option>
+                    <option value="заочная">заочная</option>
+                </select>
+            </div>
+            <div class="field">
+                <p class="label">Тип приказа</p>
+                <select name="order_type" required style="border-radius: 5px; border: 1px solid black;">
+                    <option value="На зачисление">На зачисление</option>
+                    <option value="На зачисление стипендии">На зачисление стипендии</option>
+                    <option value="На отчисление">На отчисление</option>
+                </select>
+            </div>
+            <input type="hidden" value="{{ student.getId() }}" name="student_id">
+            <div class="field">
+                <button type="submit" class="btn btn-dark" style="margin-left: 10%; margin-top: 10px">Создать приказ</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+{% endblock %}

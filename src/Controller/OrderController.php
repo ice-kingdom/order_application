@@ -12,13 +12,32 @@ class OrderController extends AbstractController
 {
     public function index(Request $request): Response
     {
-        $student_id = $request->get('student_id');
-        $user = $this->getDoctrine()
-            ->getRepository(Student::class)
-            ->findBy(array('id' => $student_id));
+        $studentId = $request->get('student_id');
+        $student = $this->getStudentById($studentId);
         return $this->render('order/index.html.twig', [
             'controller_name' => 'OrderController',
-            'student' => $user[0]
+            'student' => $student
         ]);
+    }
+
+    public function getStudentById($studentId){
+        $student = $this->getDoctrine()
+            ->getRepository(Student::class)
+            ->findBy(array('id' => $studentId));
+        return $student[0];
+    }
+
+    public function createOrderView(Request $request)
+    {
+        $studentId = $request->get('student_id');
+        $student = $this->getStudentById($studentId);
+        return $this->render('order/create_form.html.twig',
+        [
+            'student' => $student
+        ]);
+    }
+
+    public function createOrder(Request $request){
+        dd($request);
     }
 }
