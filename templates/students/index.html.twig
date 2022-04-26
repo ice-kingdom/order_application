@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div>
+        <a href="{{ path('home')}}" type="button" class="btn btn-outline-dark" style=" margin-left: 5%; position: absolute">Назад</a>
+    </div>
     <div class="contain">
         <h1 class="zag">Список студентов</h1>
         {% for st in students %}

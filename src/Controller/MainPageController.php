@@ -28,13 +28,15 @@ class MainPageController extends AbstractController
     public function students(Request $request)
     {
         $groupName = $this->getGroupNumber($request->get('group_name'));
+        $url = $request->headers->get('referer');
         $students = $this->getDoctrine()
             ->getRepository(Student::class)
             ->findBy(array('group_number' => $groupName));
         return $this->render('students/index.html.twig',
         [
             'group' => $groupName,
-            'students' => $students
+            'students' => $students,
+            'url' => $url
         ]);
     }
 

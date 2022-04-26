@@ -9,6 +9,9 @@
     }
 </style>
 <div class="container">
+    <div>
+        <a href="{{ path('students', {'group_name': group}) }}" type="button" class="btn btn-outline-dark">Назад</a>
+    </div>
     <h1>{{student.getLastName()}} {{student.getFirstName()}} {{ student.getGroupNumber() }}</h1>
     <div>
         <a href="/createorder/{{student.getId()}}" class="btn btn-dark">Создать приказ</a>
@@ -27,13 +30,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1488</td>
-                    <td>144-2g</td>
-                    <td>25.04.2022</td>
-                    <td>На зачисление стипендии</td>
-                    <td><a href="#" style="text-decoration: none;">🖨</a></td>
-                </tr>
+
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.getId() }}</td>
+                        <td>{{ order.getOrderNumber() }}</td>
+                        <td>{{ order.getOrderDate() }}</td>
+                        <td>{{order.getOrderWording()}}</td>
+                        <td><a href="#" style="text-decoration: none;">🖨</a></td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
 </div>

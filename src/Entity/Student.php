@@ -89,4 +89,18 @@ class Student
 
         return $this;
     }
+
+    public function getGroupNumberInEnglish($groupNumber){
+        $groups = [
+            'MT-101' => 'MT-101',
+            'MT-102' => 'MT-102',
+            'MP-101' => 'MП-101',
+            'MP-102' => 'MП-102',
+            'MN-101' => 'MН-101',
+            'MN-102' => 'MН-102',
+            'MK-101' => 'MК-101',
+            'MK-102' => 'MК-102',
+        ];
+        return array_search($groupNumber, $groups);
+    }
 }
