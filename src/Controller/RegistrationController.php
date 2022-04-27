@@ -23,6 +23,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
         //dd($form);
         if ($form->isSubmitted() && $form->isValid()) {
+            $submittedForm = $request->get('registration_form');
             // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
@@ -30,11 +31,12 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            if($request->get('login', 'default') == "default"){
-                $user->setLogin("default");
+
+            if(is_null($submittedForm['name']) == false){
+                $user->setName($submittedForm['name']);
             }
-            if($request->get('name', 'default') == "default"){
-                $user->setName("default");
+            if(is_null($submittedForm['login']) == false){
+                $user->setLogin($submittedForm['login']);
             }
 
             $entityManager->persist($user);

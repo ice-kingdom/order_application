@@ -7,12 +7,10 @@
         <h1>регистрация</h1>
 
         {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.email, { 'attr': {'class': 'input-form'} }) }}
-            {{ form_row(registrationForm.plainPassword, {
-                'attr':{'class':'input-form'}
-            }) }}
-{#        {{ form_row(registrationForm.agreeTerms) }}#}
-
+            {{ form_row(registrationForm.email, { 'attr': {'class': 'input-form', 'placeholder': 'почта'} }) }}
+            {{ form_row(registrationForm.plainPassword, {'attr':{'class':'input-form', 'placeholder': 'пароль'}}) }}
+            {{ form_row(registrationForm.name, {'attr':{'class':'input-form', 'placeholder': 'имя'}}) }}
+            {{ form_row(registrationForm.login, {'attr':{'class':'input-form', 'placeholder': 'login'}}) }}
         <div class="input-form">
             <input type="submit" value="Зарегистрироваться">
         </div>
