@@ -9,6 +9,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -88,11 +89,11 @@ class OrderController extends AbstractController
 
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('demopdf/demopdf.html.twig', [
-            'title' => "Welcome to our PDF Test"
+            'title' => "титл"
         ]);
 
         // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
+        $dompdf->loadHtml($html, 'utf-8');
 
         // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
         $dompdf->setPaper('A4', 'portrait');
@@ -112,5 +113,19 @@ class OrderController extends AbstractController
      */
     public function testPdf(){
         return $this->render('demopdf/demopdf.html.twig');
+    }
+
+    public function getOrder(Request $request)
+    {
+        $order = $this->getDoctrine()
+            ->getRepository(Order::class)
+            ->findBy(array('id' => $request->get('order_id')));
+        $order = $order[0];
+        $result = [
+            'description' => $order->getDescription(),
+            'order_date' => $order->getOrderDate(),
+            'order_number' => $order->getOrderNumber()
+        ];
+        return new JsonResponse(['order' => $result]);
     }
 }

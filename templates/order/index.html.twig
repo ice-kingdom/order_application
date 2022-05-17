@@ -2,58 +2,99 @@
 
 {% block title %}Order{% endblock %}
 {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 {% endblock %}
 {% block body %}
-<style>
-    .container {
-        margin-top: 5%;
-    }
-</style>
-<div class="container">
-    <div>
-        <a href="{{ path('students', {'group_name': group}) }}" type="button" class="btn btn-outline-dark">Назад</a>
-    </div>
-    <h1>{{student.getLastName()}} {{student.getFirstName()}} {{ student.getGroupNumber() }}</h1>
-    <div>
-        <a href="/createorder/{{student.getId()}}" class="btn btn-dark">Создать приказ</a>
-    </div>
-{#    <form action="{{ path('logout') }}" method="post">#}
-{#        <button class="btn btn-primary" type="submit">logout</button>#}
-{#            </form>#}
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">ID приказа</th>
-                    <th scope="col">Номер приказа</th>
-                    <th scope="col">Дата приказа</th>
-                    <th scope="col">Формулировка</th>
-                    <th scope="col">Печать</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                {% for order in orders %}
-                    <tr>
-                        <td>{{ order.getId() }}</td>
-                        <td>{{ order.getOrderNumber() }}</td>
-                        <td>{{ order.getOrderDate() }}</td>
-                        <td>{{order.getOrderWording()}}</td>
-                        <td><a href="{{path('acme_demo_pdf') }}" style="text-decoration: none; cursor: pointer;">🖨</a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-</div>
-<script type="text/javascript">
-    function download(){
-        let url = '/print_order';
-        let data = {
-            id: 182878
+    <style>
+        .container {
+            margin-top: 5%;
         }
-        $.post(url, data, function (res){
-            console.log(res);
-        });
-    }
-</script>
+    </style>
+    <div class="container">
+        <div>
+            <a href="{{ path('students', {'group_name': group}) }}" type="button" class="btn btn-outline-dark">Назад</a>
+        </div>
+        <h1>{{ student.getLastName() }} {{ student.getFirstName() }} {{ student.getGroupNumber() }}</h1>
+        <div>
+            <a href="/createorder/{{ student.getId() }}" class="btn btn-dark">Создать приказ</a>
+        </div>
+        {#    <form action="{{ path('logout') }}" method="post"> #}
+        {#        <button class="btn btn-primary" type="submit">logout</button> #}
+        {#            </form> #}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">ID приказа</th>
+                <th scope="col">Номер приказа</th>
+                <th scope="col">Дата приказа</th>
+                <th scope="col">Формулировка</th>
+                <th scope="col">Печать</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.getId() }}</td>
+                    <td ><a style="color: black;" href="javascript:void(0)" onclick="openModal({{ order.getId() }})">{{ order.getOrderNumber() }}</a></td>
+                    <td>{{ order.getOrderDate() }}</td>
+                    <td>{{ order.getOrderWording() }}</td>
+                    <td><a href="{{ path('acme_demo_pdf') }}" style="text-decoration: none; cursor: pointer;">🖨</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span onclick="closeModal()" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modal_body" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button onclick="closeModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function openModal(orderId){
+            let url = '/get_order';
+            $('#exampleModal').modal('show')
+            let data = {
+                order_id: orderId
+            };
+            $.post(url, data, function (res) {
+                $('#modal_body').append('<p>' + res.order.description + '</p>');
+                $('#exampleModalLabel').append('Приказ номер ' + res.order.order_number);
+                console.log(res);
+            });
+        }
+
+        function closeModal(){
+            $('#exampleModal').modal('hide')
+            $('#exampleModalLabel').empty();
+            $('#modal_body').empty();
+        }
+
+        function download() {
+            let url = '/print_order';
+            let data = {
+                id: 182878
+            }
+            $.post(url, data, function (res) {
+                console.log(res);
+            });
+        }
+    </script>
 {% endblock %}

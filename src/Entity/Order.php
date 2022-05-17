@@ -11,6 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Order
 {
+    const FOR_1 = "Зачислен такой то такой-то"; // на зачисление
+    const FOR_2 = "отчислен такой то такой-то"; // на отчислен
+    const FOR_3 = "степенден такой то такой-то"; // на степенден
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -89,5 +92,16 @@ class Order
         $this->student_id = $student_id;
 
         return $this;
+    }
+
+    public function getDescription(): string
+    {
+        switch ($this->getOrderWording()) {
+            case 'На зачисление':
+                return self::FOR_1;
+            case 'На отчисление':
+                return self::FOR_2;
+        }
+        return self::FOR_1;
     }
 }
