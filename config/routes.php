@@ -35,4 +35,6 @@ return function (RoutingConfigurator $routes) {
         ->controller([OrderController::class, 'createOrderView'])->methods(['GET']);
     $routes->add('put_order_in_db', '/create_an_order')
         ->controller([OrderController::class, 'createOrder'])->methods(['POST']);
+    //$routes->add('print_order', '/print_order')
+    //    ->controller([OrderController::class, 'printOrder'])->methods(['POST']);
 };

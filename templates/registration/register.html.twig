@@ -1,16 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Регистрация{% endblock %}
 
 {% block body %}
     <div class="form">
         <h1>регистрация</h1>
 
         {{ form_start(registrationForm) }}
+        <div class="input-form">
             {{ form_row(registrationForm.email, { 'attr': {'class': 'input-form', 'placeholder': 'почта'} }) }}
-            {{ form_row(registrationForm.plainPassword, {'attr':{'class':'input-form', 'placeholder': 'пароль'}}) }}
+        </div>
+        <div class="input-form">
             {{ form_row(registrationForm.name, {'attr':{'class':'input-form', 'placeholder': 'имя'}}) }}
+        </div>
+        <div class="input-form">
             {{ form_row(registrationForm.login, {'attr':{'class':'input-form', 'placeholder': 'login'}}) }}
+        </div>
+        <div class="input-form">
+            {{ form_row(registrationForm.plainPassword, {'attr':{'class':'input-form', 'placeholder': 'пароль'}}) }}
+        </div>
         <div class="input-form">
             <input type="submit" value="Зарегистрироваться">
         </div>
@@ -21,9 +29,8 @@
 {% block styles %}
     <style>
         body {
-            background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(1.jpg);
-            -webkit-background-size: cover;
-            background-size: cover;
+        background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(1.jpg);
+        background-size: cover;
         }
 
         .form {
@@ -33,10 +40,12 @@
             transform: translate(-50%, -50%);
             background: #3377adeb;
             border-radius: 15px;
+            height: 450px;
+            width: 350px;
         }
 
         .form h1 {
-            margin: 30px 100px;
+            margin: 30px 43px;
             padding: 0;
             text-align: center;
             color: #FFFFFF;
@@ -45,13 +54,13 @@
         }
 
         .input-form {
-            margin: 15px 40px;
+            margin: 7px 18px;
             text-align: center;
         }
 
         .input-form input{
-            padding: 10%;
-            width: 100%;
+            padding: 2.5%;
+            width: 90%;
             color: white;
             font-size: 20px;
             background: none;

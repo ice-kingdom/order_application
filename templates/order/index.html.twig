@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Order{% endblock %}
-
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+{% endblock %}
 {% block body %}
 <style>
     .container {
@@ -37,11 +39,21 @@
                         <td>{{ order.getOrderNumber() }}</td>
                         <td>{{ order.getOrderDate() }}</td>
                         <td>{{order.getOrderWording()}}</td>
-                        <td><a href="#" style="text-decoration: none;">🖨</a></td>
+                        <td><a href="{{path('acme_demo_pdf') }}" style="text-decoration: none; cursor: pointer;">🖨</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
 </div>
-
+<script type="text/javascript">
+    function download(){
+        let url = '/print_order';
+        let data = {
+            id: 182878
+        }
+        $.post(url, data, function (res){
+            console.log(res);
+        });
+    }
+</script>
 {% endblock %}
