@@ -88,7 +88,7 @@ class OrderController extends AbstractController
         $dompdf = new Dompdf($pdfOptions);
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('demopdf/demopdf.html.twig', [
+        $html = $this->renderView('demopdf/money.html.twig', [
             'title' => "титл"
         ]);
 
